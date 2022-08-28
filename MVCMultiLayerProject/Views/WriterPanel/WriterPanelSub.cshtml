@@ -1,0 +1,60 @@
+﻿@using EntityLayer.Concrete
+@model List<Sub>
+@{
+    ViewBag.Title = "WriterPanelSub";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Aboneler</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                Abone Tablosu
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr class="text-center">
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Abone Mail Adresi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                            <tr class="text-center">
+                                <td>
+                                    @x.SubID
+                                </td>
+                                <td>
+                                    <a>
+                                        @x.SubMail
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+

@@ -1,0 +1,70 @@
+﻿@{}
+    <div class="content-form">
+        <h2 style="font-size:28px">Bir yorum yapın</h2>
+        @using (Html.BeginForm("YorumYap", "Home", FormMethod.Post))
+        {
+
+        <form action="" method="post" class="site-content-blocks-2-form-post">
+            <link rel="stylesheet" href="~/11/style-contact.css">
+            <input type="hidden" placeholder="ID" name="ContentID" value="@ViewBag.deger" required />
+            <div class="site-content-blocks-2-form-post-name">
+                <label for="g8-sim" class="site-content-blocks-2-form-post-name-label">
+                    Kullanıcı Adı
+                    <span>(gerekli)</span>
+                </label>
+                <input type="text" name="CommentUserName" id="g8-sim" placeholder="Kullanıcı Adı" required aria-required="true">
+            </div>
+            <div class="site-content-blocks-2-form-post-email">
+                <label for="g8-mail" class="site-content-blocks-2-form-post-email-label">
+                    Email
+                    <span>(gerekli)</span>
+                </label>
+                <input type="email" name="CommentUserMail" id="g8-mail" placeholder="Mail Adresi" required aria-required="true">
+            </div>
+            <div class="site-content-blocks-2-form-post-textarea">
+                <label for="g8-mesaj" class="site-content-blocks-2-form-post-textarea-label">
+                    Yorum
+                    <span>(gerekli)</span>
+                </label>
+                <textarea name="CommentMessage" id="g8-mesaj" placeholder="Yorum" rows="20" class="site-content-blocks-2-form-post-textarea-label-txt" required aria-required="true"></textarea>
+            </div>
+            <p class="site-content-blocks-2-form-post-submit">
+                <button type="submit" class="site-content-blocks-2-form-post-submit-pushbutton">Gönder</button>
+                <input type="hidden" name="x" id="x">
+                <input type="hidden" name="xx">
+                <input type="hidden" name="id-contact" value="8">
+                <input type="hidden" name="action">
+                <input type="hidden" name="hash-contact">
+            </p>
+        </form>
+        }
+        @*@using (Html.BeginForm("Yorum Yap", "Home", FormMethod.Post))
+                        {
+            <div class="site-content-blocks-2-form-post">
+                <link rel="stylesheet" href="~/11/style-contact.css">
+                <div class="site-content-blocks-2-form-post-name">
+                    @Html.LabelFor(kayit => kayit.CommentUserName, htmlAttributes: new { @class = "site-content-blocks-2-form-post-name-label" })
+                    <div class="">
+                        @Html.EditorFor(kayit => kayit.CommentUserName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="site-content-blocks-2-form-post-email">
+                    @Html.LabelFor(kayit => kayit.CommentUserMail, htmlAttributes: new { @class = "site-content-blocks-2-form-post-email-label" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(kayit => kayit.CommentUserMail, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="site-content-blocks-2-form-post-textarea">
+                    @Html.LabelFor(kayit => kayit.CommentMessage, htmlAttributes: new { @class = "control-label col-md-10 site-content-blocks-2-form-post-textarea-label" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(kayit => kayit.CommentMessage, new { htmlAttributes = new { @class = "site-content-blocks-2-form-post-textarea-label-txt", @style = "height: 200px;" } })
+                    </div>
+                </div>
+                <div class="site-content-blocks-2-form-post-submit">
+                    <button type="submit" class="site-content-blocks-2-form-post-submit-pushbutton">Gönder</button>
+
+                </div>
+            </div>
+                        }*@
+
+    </div>

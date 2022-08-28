@@ -1,0 +1,54 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/11/style-blog.css">
+<style>
+    .main-navigation .current-menu-item-2 > a {
+        color: #e8554e;
+    }
+</style>
+@{
+    ViewBag.sub = 2;
+}
+<div class="site-content-area">
+    <main id="main" class="site-main">
+        <article id="articless" class="site-articles">
+            <header class="site-articles-header"><h2 class="site-articles-title">Blog</h2></header>
+            <div class="site-create-content">
+                <div style="height: 64px; " aria-hidden="true" class="site-last-spacer"></div>
+                <div class="site-last-wrapper">
+                    @foreach (var x in Model.OrderByDescending(x => x.ContentID))
+                    {
+                        if (x.Heading.WriterID == x.WriterID && x.Heading.Category.CategoryStatus == true && x.Heading.HeadingStatus == true)
+                        {
+
+
+                            <article class="site-last-wrapper-one">
+                                <div class="site-last-wrapper-article">
+                                    <a href="/Home/BlogDetay/@x.ContentID" rel="bookmark">
+                                        <img src="@x.ContentImage" alt="" style="margin-bottom: 20px; max-width:750px; max-height:430px;" />
+                                    </a>
+                                    <h2 class="site-last-wrapper-article-title">
+                                        <a href="/Home/BlogDetay/@x.ContentID" rel="bookmark">@x.Heading.HeadingName</a>
+                                    </h2>
+                                    <p>
+                                        @x.ContentValue
+                                        <a class="more-link" href="/Home/BlogDetay/@x.ContentID">...Devamını Oku</a>
+                                    </p>
+                                    <div class="site-last-wrapper-article-meta">
+                                        <p>Yayınlanma Tarihi: @x.ContentDate.ToString("dd.MM.yyyy")</p>
+                                    </div>
+                                </div>
+                            </article>
+                        }
+                    }
+                </div>
+        </article>
+    </main>
+</div>
+<div id="secondary" class="site-footer-widget-area" role="complementary"></div>
+

@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.Comment
+@{
+    ViewBag.Title = "UpdateComment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yorum Güncelleme Sayfası</h2>
+@using (Html.BeginForm("WPUpdateComment", "WRiterPanelComment", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Yorum: ")
+        @Html.TextBoxFor(x => x.CommentMessage, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.CommentID, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.CommentUserMail, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.CommentUserName, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.ContentID, new { @class = "form-control" })
+        @Html.HiddenFor(x => x.CommentDate, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Kaydet</button>
+    </div>
+}
+

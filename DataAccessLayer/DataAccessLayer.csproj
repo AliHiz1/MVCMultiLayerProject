@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{294A2AAE-1D2D-42F4-BD59-99968964E996}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.10.3.4\lib\netstandard2.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IAdminDAL.cs" />
+    <Compile Include="Abstract\ICommentDAL.cs" />
+    <Compile Include="Abstract\IContactDAL.cs" />
+    <Compile Include="Abstract\IContentCommentDAL.cs" />
+    <Compile Include="Abstract\ISubDAL.cs" />
+    <Compile Include="Abstract\IWriterDAL.cs" />
+    <Compile Include="Abstract\IHeadingDAL.cs" />
+    <Compile Include="Abstract\IContentDAL.cs" />
+    <Compile Include="Abstract\IAboutDAL.cs" />
+    <Compile Include="Abstract\ICategoryDAL.cs" />
+    <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Concrete\Context.cs" />
+    <Compile Include="Concrete\Repositories\GenericRepository.cs" />
+    <Compile Include="EntityFramework\EFAdminDAL.cs" />
+    <Compile Include="EntityFramework\EFCommentDAL.cs" />
+    <Compile Include="EntityFramework\EFContentCommentDAL.cs" />
+    <Compile Include="EntityFramework\EFContentDAL.cs" />
+    <Compile Include="EntityFramework\EFHeadingDAL.cs" />
+    <Compile Include="EntityFramework\EFContactDAL.cs" />
+    <Compile Include="EntityFramework\EFAboutDAL.cs" />
+    <Compile Include="EntityFramework\EFCategoryDAL.cs" />
+    <Compile Include="EntityFramework\EFSubDAL.cs" />
+    <Compile Include="EntityFramework\EFWriterDAL.cs" />
+    <Compile Include="Migrations\202111291515098_new-db-mig.cs" />
+    <Compile Include="Migrations\202111291515098_new-db-mig.Designer.cs">
+      <DependentUpon>202111291515098_new-db-mig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111301012064_about-length-fix.cs" />
+    <Compile Include="Migrations\202111301012064_about-length-fix.Designer.cs">
+      <DependentUpon>202111301012064_about-length-fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111301027362_writer-role-add.cs" />
+    <Compile Include="Migrations\202111301027362_writer-role-add.Designer.cs">
+      <DependentUpon>202111301027362_writer-role-add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112021032069_db-changes.cs" />
+    <Compile Include="Migrations\202112021032069_db-changes.Designer.cs">
+      <DependentUpon>202112021032069_db-changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112160539261_content-img-add.cs" />
+    <Compile Include="Migrations\202112160539261_content-img-add.Designer.cs">
+      <DependentUpon>202112160539261_content-img-add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112210636240_add-comment-table.cs" />
+    <Compile Include="Migrations\202112210636240_add-comment-table.Designer.cs">
+      <DependentUpon>202112210636240_add-comment-table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112210657154_comment-content-changes.cs" />
+    <Compile Include="Migrations\202112210657154_comment-content-changes.Designer.cs">
+      <DependentUpon>202112210657154_comment-content-changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112270551004_writer-update.cs" />
+    <Compile Include="Migrations\202112270551004_writer-update.Designer.cs">
+      <DependentUpon>202112270551004_writer-update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112270552525_writer-update-2.cs" />
+    <Compile Include="Migrations\202112270552525_writer-update-2.Designer.cs">
+      <DependentUpon>202112270552525_writer-update-2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201041044049_addconcom.cs" />
+    <Compile Include="Migrations\202201041044049_addconcom.Designer.cs">
+      <DependentUpon>202201041044049_addconcom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201050844422_commentupdate.cs" />
+    <Compile Include="Migrations\202201050844422_commentupdate.Designer.cs">
+      <DependentUpon>202201050844422_commentupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201050848359_commentupdate2.cs" />
+    <Compile Include="Migrations\202201050848359_commentupdate2.Designer.cs">
+      <DependentUpon>202201050848359_commentupdate2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201051340161_contentcommentupdate.cs" />
+    <Compile Include="Migrations\202201051340161_contentcommentupdate.Designer.cs">
+      <DependentUpon>202201051340161_contentcommentupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201071525592_contentupdate.cs" />
+    <Compile Include="Migrations\202201071525592_contentupdate.Designer.cs">
+      <DependentUpon>202201071525592_contentupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201101420077_contentcommentnewupdate.cs" />
+    <Compile Include="Migrations\202201101420077_contentcommentnewupdate.Designer.cs">
+      <DependentUpon>202201101420077_contentcommentnewupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201101433594_contentcommentnewupdate2.cs" />
+    <Compile Include="Migrations\202201101433594_contentcommentnewupdate2.Designer.cs">
+      <DependentUpon>202201101433594_contentcommentnewupdate2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201120644216_addsub.cs" />
+    <Compile Include="Migrations\202201120644216_addsub.Designer.cs">
+      <DependentUpon>202201120644216_addsub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201141125555_commentdateadd.cs" />
+    <Compile Include="Migrations\202201141125555_commentdateadd.Designer.cs">
+      <DependentUpon>202201141125555_commentdateadd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201190706584_contentstringupdate.cs" />
+    <Compile Include="Migrations\202201190706584_contentstringupdate.Designer.cs">
+      <DependentUpon>202201190706584_contentstringupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{fc56ab3a-6ec2-4ee2-a1c6-b997fce35f42}</Project>
+      <Name>EntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111291515098_new-db-mig.resx">
+      <DependentUpon>202111291515098_new-db-mig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111301012064_about-length-fix.resx">
+      <DependentUpon>202111301012064_about-length-fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111301027362_writer-role-add.resx">
+      <DependentUpon>202111301027362_writer-role-add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112021032069_db-changes.resx">
+      <DependentUpon>202112021032069_db-changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112160539261_content-img-add.resx">
+      <DependentUpon>202112160539261_content-img-add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112210636240_add-comment-table.resx">
+      <DependentUpon>202112210636240_add-comment-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112210657154_comment-content-changes.resx">
+      <DependentUpon>202112210657154_comment-content-changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112270551004_writer-update.resx">
+      <DependentUpon>202112270551004_writer-update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112270552525_writer-update-2.resx">
+      <DependentUpon>202112270552525_writer-update-2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201041044049_addconcom.resx">
+      <DependentUpon>202201041044049_addconcom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201050844422_commentupdate.resx">
+      <DependentUpon>202201050844422_commentupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201050848359_commentupdate2.resx">
+      <DependentUpon>202201050848359_commentupdate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201051340161_contentcommentupdate.resx">
+      <DependentUpon>202201051340161_contentcommentupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201071525592_contentupdate.resx">
+      <DependentUpon>202201071525592_contentupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201101420077_contentcommentnewupdate.resx">
+      <DependentUpon>202201101420077_contentcommentnewupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201101433594_contentcommentnewupdate2.resx">
+      <DependentUpon>202201101433594_contentcommentnewupdate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201120644216_addsub.resx">
+      <DependentUpon>202201120644216_addsub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201141125555_commentdateadd.resx">
+      <DependentUpon>202201141125555_commentdateadd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201190706584_contentstringupdate.resx">
+      <DependentUpon>202201190706584_contentstringupdate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

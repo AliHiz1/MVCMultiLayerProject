@@ -1,0 +1,241 @@
+.site{
+    margin-top: 1.5em;
+    margin-bottom: 3em;
+    padding: 0 1.5em;
+    @media only screen and (min-width: 50em){
+        margin-top: 4.5em;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1200px;
+    }
+    &-content{
+        @media only screen and (min-width: 50em){
+        float: left;
+        margin: 0 -35% 0 0;
+        width: 100%;
+        }
+        &-main{
+            @media only screen and (mid-width: 50em){
+                margin: 0 35% 0 0;
+            }
+        }
+        &-article{
+            margin: 0 0 3em;
+        }
+        &-header{
+            margin-bottom: 1.5em;
+            @media only screen and (min-width: 50em){
+                text-align: left;
+            }
+            &-title{
+                margin-bottom: 0;
+                @media only screen and (min-width: 50em){
+                    text-align: left;
+                }
+            }
+        }
+        &-entry{
+            margin: 1.5em 0 0;
+        }
+        &-image{
+            background: #eee;
+            width: 100%;
+        }
+        &-para{
+            text-align: left;
+        }
+        &-spacer{
+            clear: both;
+        }
+        &-blocks{
+            box-sizing: border-box;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1.75em;
+            @media (min-width: 782px){
+                flex-wrap: nowrap; 
+            }
+            &-1{
+                flex-grow: 1;
+                min-width: 0;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                @media (min-width: 782px){
+                    flex-basis: 0;
+                    flex-grow: 1;
+                }
+                &-h-2{
+                    text-align: left;
+                }
+            }
+            &-2{
+                flex-grow: 1;
+                min-width: 0;
+                overflow-wrap: break-word;
+                word-break: break-word;
+                @media (min-width: 782px){
+                    margin-left: 2em;
+                    flex-basis: 0;
+                    flex-grow: 1;
+                }
+                &-h2{
+                    text-align: left;
+                }
+                &-form-post{
+                    & label{
+                        margin-bottom: .25em;
+                        float: none;
+                        font-weight: 700;
+                        display: block;
+                        margin: .375em 0 .1875em;
+                        font-size: 18px;
+                        font-size: 1.8rem;
+                        color: #666;
+                        text-align: left;
+                        & span{
+                            font-size: 85%;
+                            margin-left: .25em;
+                            font-weight: 400;
+                        }
+                        & input[type=text]{
+                            width: 100%;
+                            box-sizing: border-box;
+                            margin-bottom: 1.5em;
+                            padding: 14px 7px;
+                            height: 3em;
+                        }
+                        &-submit{
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+        &-footer{
+            margin: .75em 0;
+            @media screen and (min-width: 35em){
+                clear: none;
+                display: inline-block;
+            }
+            &-wrap{
+                background-color: #303030;
+                margin-top: 3em;
+                &-footer{
+                    margin: 3em auto 6em;
+                    overflow: hidden;
+                    padding: 0 1.5em;
+                    @media only screen and (min-width: 50em){
+                        text-align: left;
+                        margin: 4.5em auto 6em;
+                        max-width: 1200px;
+                    }
+                    & .site-content-footer-wrap-footer-info{
+                        color: #555;
+                        font-style: italic;
+                    }
+                    &-info{
+                        clear: both;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        &-widget-area{
+          float: right;
+          overflow: hidden;
+          width: 25%;
+        }
+    }
+}
+h1, h2, h3, h4, h5, h6{
+@media only screen and (min-width: 50em){
+    line-height: 1.4;
+}
+}
+h2{
+    font-size: 42px;
+    font-size: 4.2rem;
+}
+img.emoji{
+    display: inline;
+    border: none;
+    box-shadow: none;
+    height: 1em;
+    width: 1em;
+    margin: 0 .07em;
+    vertical-align: -0.1em;
+    background: none;
+    padding: 0;
+}
+.info{
+    margin-bottom: 1.5em;
+}
+.social-links{
+    display: flex;
+    gap: .5em;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 24px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    text-indent: 0;
+    margin: 0;
+    
+}
+.instagram{
+    background-color: #f00075;
+    color: #fff;
+    & a{
+        padding: .25em;
+        border-bottom: 0;
+        box-shadow: none;
+        text-decoration: none;
+    }
+    & svg{
+        height: 1em;
+        width: 1em;
+    }
+}
+.facebook{
+    background-color: #1778f2;
+    color: #fff;
+    & a{
+        padding: .25em;
+        border-bottom: 0;
+        box-shadow: none;
+        text-decoration: none;
+    }
+    & svg{
+        height: 1em;
+        width: 1em;
+    }
+}
+.twitter{
+    background-color: #1da1f2;
+    color: #fff;
+    & a{
+        padding: .25em;
+        border-bottom: 0;
+        box-shadow: none;
+        text-decoration: none;
+    }
+    & svg{
+        height: 1em;
+        width: 1em;
+    }
+}
+.wordpress{
+    background-color: #3499cd;
+    color: #fff;
+    & a{
+        padding: .25em;
+        border-bottom: 0;
+        box-shadow: none;
+        text-decoration: none;
+    }
+    & svg{
+        height: 1em;
+        width: 1em;
+    }
+}

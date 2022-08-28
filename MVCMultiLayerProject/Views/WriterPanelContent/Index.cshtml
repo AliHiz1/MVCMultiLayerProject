@@ -1,0 +1,81 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@{ string color = "";
+    string bttn = "";
+    string status = ""; }
+
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Yazarın Yazıları</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                Yazarın Tüm Yazıları
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <br />
+            <div class="wrapper">
+                <section class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @foreach (var x in Model)
+                                {
+                                    if (x.ContentStatus && x.Heading.HeadingStatus && x.Heading.Category.CategoryStatus == true && x.WriterID == x.Writer.WriterID)
+                                    {
+                                        color = "badge badge-success";
+                                    }
+                                    else
+                                    {
+                                        color = "badge badge-danger";
+                                    }
+                                    <div class="timeline">
+
+                                        <div class="time-label">
+                                            <span class="bg-success">@(((DateTime)x.ContentDate).ToString("dd.MMM.yyyy"))</span>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-comment bg-yellow"></i>
+                                            <div class="timeline-item">
+                                                <h3 class="timeline-header">
+                                                    <a href="/Home/BlogDetay/@x.ContentID">@x.Heading.HeadingName</a> @x.Writer.WriterName @x.Writer.WriterSurname
+                                                    <a href="/WriterPanelContent/WPContentUpdate/@x.ContentID" class="btn btn-success">Yazıyı Düzenle</a>
+                                                    <a class="@color">Yazı Durumu</a>
+                                                </h3>
+                                                <div class="timeline-body">
+                                                    <img src="@x.ContentImage" style="max-width: 725px; max-height: 430px;" />
+                                                    <br />
+                                                    @x.ContentValue
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    </br>
+    </br>
+    <a href="/WriterPanelContent/WPContentAdd/" class="btn btn-primary">Yeni Yazı Ekle</a>
+</body>
+

@@ -1,0 +1,92 @@
+﻿@model EntityLayer.Concrete.ContentComment
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+
+<!DOCTYPE HTML>
+<html>
+<body>
+    <link href="~/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <style>
+        .main-navigation .current-menu-item-2 > a {
+            color: #e8554e;
+        }
+    </style>
+
+    <link rel="stylesheet" href="~/11/style-blog.css">
+    <div class="site-create-content">
+        <div class="site-last-wrapper">
+            @foreach (var x in Model.x2)
+            {
+                <article class="site-last-wrapper-one">
+                    <div class="site-last-wrapper-article">
+                        <header class="site-articles-header">
+                            <h2 class="site-articles-title">
+                                @x.Heading.HeadingName
+                            </h2>
+                        </header>
+                        <img src="@x.ContentImage" alt="" style="margin-bottom: 20px; max-width:750px; max-height:430px;" />
+                        <p>
+                            @x.ContentValue
+                        </p>
+                        <div class="site-last-wrapper-article-meta">
+                            <p>Yayınlanma Tarihi: @x.ContentDate</p>
+                        </div>
+                    </div>
+                </article>
+            }
+        </div>
+        <link href="~/web2/css/style.css" rel="stylesheet" type='text/css' />
+        @foreach (var y in Model.x1)
+        {
+            if (y.CommentStatus == true)
+            {
+                <ul class="comment-list">
+
+                    <li class="comments">
+                        <div class="userimage" style="padding-right: 15px;flex: 1;">
+                            <img src="~/web2/images/avatar.png" class="img-responsive" alt="">
+                        </div>
+                        <div class="desc">
+                            <p><h1>@y.CommentUserName: </h1> @y.CommentMessage </p>
+                            <p><h4>Tarih: </h4>@y.CommentDate</p>
+                        </div>
+                    </li>
+                </ul>
+            }
+        }
+
+        @*@using (Html.BeginForm("BlogDetay", "Home", FormMethod.Post))
+        {
+            <div class="site-content-blocks-2-form-post">
+                <link rel="stylesheet" href="~/11/style-contact.css">
+                <div class="site-content-blocks-2-form-post-name">
+                    @Html.Label("Kullanıcı Adı: ", htmlAttributes: new { @class = "site-content-blocks-2-form-post-name-label" })
+                    <div class="">
+                        @Html.EditorFor(yorum => yorum.comment.CommentUserName, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="site-content-blocks-2-form-post-email">
+                    @Html.Label("Mail Adresi: ", htmlAttributes: new { @class = "site-content-blocks-2-form-post-email-label" })
+                    <div class="">
+                        @Html.EditorFor(yorum => yorum.comment.CommentUserMail, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="site-content-blocks-2-form-post-textarea">
+                    @Html.Label("Yorum: ", htmlAttributes: new { @class = "site-content-blocks-2-form-post-textarea-label" })
+                    <div class="">
+                        @Html.TextAreaFor(yorum => yorum.comment.CommentMessage, new { htmlAttributes = new { @class = "site-content-blocks-2-form-post-textarea-label-txt", @style = "height: 200px;", @rows = "20" } })
+                    </div>
+                </div>
+                <div class="site-content-blocks-2-form-post-submit">
+                    <button type="submit" class="site-content-blocks-2-form-post-submit-pushbutton">Gönder</button>
+
+                </div>
+            </div>
+        }*@
+        @Html.Partial("YorumYap", "Home")
+    </div>
+</body>
+</html>
+

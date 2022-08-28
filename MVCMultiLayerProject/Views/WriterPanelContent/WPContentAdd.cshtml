@@ -1,0 +1,43 @@
+﻿@model EntityLayer.Concrete.Content
+@{
+    ViewBag.Title = "WPContentAdd";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Yeni Yazı Ekleme Sayfası</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @using (Html.BeginForm("WPContentAdd", "WriterPanelContent", FormMethod.Post))
+    {
+<div class="form-group">
+    @Html.HiddenFor(x => x.ContentDate, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.Heading.Writer.WriterID, new { @class = "form-control" })
+    @Html.HiddenFor(x => x.ContentStatus, new { @class = "form-control" })
+    <br />
+    @Html.Label("Başlık: ")
+    @Html.DropDownListFor(x => x.HeadingID, (IEnumerable<SelectListItem>)ViewBag.vlh, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazı Resmi: ")
+    @Html.TextAreaFor(x => x.ContentImage, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazı: ")
+    @Html.TextAreaFor(x => x.ContentValue, new { @class = "form-control" })
+    <script>
+        CKEDITOR.replace('ContentValue');
+    </script>
+    <br />
+    <button class="btn btn-default">Yeni Yazı Ekle</button>
+</div>
+    }
+    @Scripts.Render("~/Scripts/jquery-1.7.1.min.js")
+    @Scripts.Render("~/ckeditor/ckeditor.js")
+    @Scripts.Render("~/ckeditor/ckfinder/ckfinder.js")
+    @Scripts.Render("~/Scripts/jquery.validate.js")
+    </body>

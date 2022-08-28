@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Heading
+@{
+    ViewBag.Title = "WriterNewHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Yeni Başlık Ekleme Sayfası</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+@using (Html.BeginForm("WriterNewHeading", "WriterPanel", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.WriterID, new { @class = "form-control" })
+    @Html.Label("Başlığın  Adı:")
+    @Html.TextBoxFor(x => x.HeadingName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.HeadingName)
+    <br />
+    @Html.Label("Kategori:")
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.vlc, new { @class = "form-control" }) @*DÜZELT*@
+    <br />
+    <button class="btn btn-default">Başlık Ekle</button>
+</div>
+}
+@*<customErrors mode="On">
+    <error statusCode="404" redirect="/ErrorPage/Page404/" />
+</customErrors>*@

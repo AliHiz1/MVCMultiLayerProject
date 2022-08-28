@@ -1,0 +1,45 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+<div class="last-articles">
+    <div class="last-container">
+        <div class="article-grid">
+            <div class="article-grid-col">
+                <h3 style="font-size:30px;">Son Yazılar</h3>
+                <div class="articles">
+                    <div class="article-blocks">
+                        <article class="wrapper">
+                            @{int a = 0;}
+                            @foreach (var x in Model.OrderByDescending(x => x.ContentID)) //take
+                            {
+                                if (x.Heading.WriterID == x.WriterID && x.Heading.Category.CategoryStatus == true && x.Heading.HeadingStatus == true)
+                                {
+                                    if (a < 3)
+                                    {
+                                        <div class="article-wrapper">
+                                            <h3 class="article-title">
+                                                <a href="/Home/BlogDetay/@x.ContentID" rel="bookmark">@x.Heading.HeadingName</a>
+                                            </h3>
+                                            <p>
+                                                <a class="article-image" href="/Home/BlogDetay/@x.ContentID">
+                                                    <img src="@x.ContentImage" style="max-width: 725px; max-height: 430px;" />
+                                                </a>
+                                            <p class="article-desc" style="max-width:725px;">
+                                                @x.ContentValue
+                                            </p>
+                                            <h6><a class="more-link" href="/Home/BlogDetay/@x.ContentID">...Devamını Oku</a></h6>
+                                            </p>
+                                            <div class="article-meta" style="margin-bottom: 1.5em;">
+                                                <p>Yayınlanma Tarihi: @x.ContentDate</p>
+                                            </div>
+                                        </div>
+                                        a++;
+                                    }
+                                }
+                            }
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

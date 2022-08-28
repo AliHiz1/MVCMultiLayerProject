@@ -1,0 +1,120 @@
+﻿@using EntityLayer.Concrete
+@model List<Comment>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@{ string color = "";
+    string bttn = "";
+    string status = ""; }
+
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Başlıklar</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                Başlık Tablosu
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr class="text-center">
+                            <th style="width: 5%">
+                                #
+                            </th>
+                            <th style="width: 15%">
+                                Başlık
+                            </th>
+                            <th style="width: 15%">
+                                Kullanıcı Adı
+                            </th>
+                            <th style="width: 15%">
+                                Mail Adresi
+                            </th>
+                            <th style="width: 5%">
+                                Durum
+                            </th>
+                            <th style="width: 25%">
+                                Yorum
+                            </th>
+                            <th style="width: 20%">
+                                İşlemler
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+
+                            if (x.CommentStatus == true)
+                            {
+                                color = "badge badge-success";
+                                bttn = "Pasif Yap";
+                                status = "btn btn-danger btn-sm";
+                            }
+                            else
+                            {
+                                color = "badge badge-danger";
+                                bttn = "Aktif Yap";
+                                status = "btn btn-success btn-sm";
+                            }
+                        <tr class="text-center">
+                            <td>
+                                @x.CommentID
+                            </td>
+                            <td>
+                                @x.Content.Heading.HeadingName
+                            </td>
+                            <td>
+                                <a>
+                                    @x.CommentUserName
+                                </a>
+                            </td>
+                            <td>
+                                <a>
+                                    @x.CommentUserMail
+                                </a>
+                            </td>
+                            <td class="project-state">
+                                <span class="@color">@x.CommentStatus</span>
+                            </td>
+                            <td>
+                                <a>
+                                    @x.CommentMessage
+                                </a>
+                            </td>
+                            <td class="project-actions text-center">
+                                <a class="btn btn-info btn-sm" href="/WriterPanelComment/WPUpdateComment/@x.CommentID">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Güncelle
+                                </a>
+                                <a class="@status" href="/WriterPanelComment/WPChangeCommentStatus/@x.CommentID">
+                                    <i class="fas fa-sync-alt"></i>
+                                    @bttn
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>
+
+

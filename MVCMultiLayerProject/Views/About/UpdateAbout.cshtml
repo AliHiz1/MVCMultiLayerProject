@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewBag.Title = "UpdateAbout";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Hakkımızda Güncelleme Sayfası</h2>
+
+@using (Html.BeginForm("UpdateAbout", "About", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.AboutID)
+    @Html.Label("Hakkımızda Açıklaması: ")
+    @Html.TextBoxFor(x => x.AboutDetails, new { @class = "form-control" })
+    <br />
+    @Html.Label("Hakkımızda Görsel URL'i: ")
+    @Html.TextAreaFor(x => x.AboutImage, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.AboutImage)
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</div>
+}

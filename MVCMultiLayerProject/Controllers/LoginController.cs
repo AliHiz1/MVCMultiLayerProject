@@ -1,0 +1,66 @@
+﻿using BusinessLayer.Concrete;
+using DataAccessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
+
+namespace MVCMultiLayerProject.Controllers
+{
+    [AllowAnonymous]
+    public class LoginController : Controller
+    {
+        AdminManager admn = new AdminManager(new EFAdminDAL());
+        // GET: Login
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(Admin p)
+        {
+            var adminuserinfo = admn.GetAdmin(p.AdminUserName, p.AdminPassword);
+            if(adminuserinfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(adminuserinfo.AdminUserName, false);
+                Session["AdminUserName"] = adminuserinfo.AdminUserName;
+                return RedirectToAction("Index", "AdminCategory");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+        [HttpGet]
+        public ActionResult WriterLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult WriterLogin(Admin p)
+        {
+            var writerinfo = admn.GetAdmin(p.AdminUserName, p.AdminPassword);
+            if(writerinfo != null)
+            {
+                FormsAuthentication.SetAuthCookie(writerinfo.AdminUserName, false);
+                Session["AdminUserName"] = writerinfo.AdminUserName;
+                return RedirectToAction("Index", "WriterPanelContent");
+            }
+            else
+            {
+                return RedirectToAction("WriterLogin");
+            }
+        }
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Abandon();
+            return RedirectToAction("index", "Login");
+        }
+    }
+}

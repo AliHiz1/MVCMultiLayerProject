@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.Content
+@{
+    ViewBag.Title = "WPContentUpdate";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<body class="hold-transition sidebar-mini">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>İçerik Güncelleme Sayfası</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    @using (Html.BeginForm("WPContentUpdate", "WriterPanelContent", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.HiddenFor(x => x.ContentID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.ContentDate, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.HeadingID, new { @class = "form-control" })
+            @Html.HiddenFor(x => x.WriterID, new { @class = "form-control" })
+            <br />
+            @Html.Label("Yazı Durumu: ")
+            @Html.TextAreaFor(x => x.ContentStatus, new { @class = "form-control" })
+            <br />
+            @Html.Label("Yazı: ")
+            @Html.TextAreaFor(x => x.ContentValue, new { @class = "form-control" })
+            <br />
+            @Html.Label("Yazı Resmi: ")
+            @Html.TextAreaFor(x => x.ContentImage, new { @class = "form-control" })
+            <br />
+            <button class="btn btn-success">Kaydet</button>
+        </div>
+    }
+

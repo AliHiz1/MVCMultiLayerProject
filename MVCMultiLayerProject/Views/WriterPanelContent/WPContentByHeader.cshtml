@@ -1,0 +1,43 @@
+﻿@using EntityLayer.Concrete
+@model List<Content>
+@{
+    ViewBag.Title = "WPContentByHeader";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        @foreach (var x in Model)
+                        {
+                            if (x.Heading.WriterID == x.WriterID) //Her yazar kendi başlığına yazı ekleyebilir.
+                            {
+                                <div class="timeline">
+
+                                    <div class="time-label">
+                                        <span class="bg-success">@(((DateTime)x.ContentDate).ToString("dd.MMM.yyyy"))</span>
+                                    </div>
+                                    <div>
+                                        <i class="fas fa-comment bg-yellow"></i>
+                                        <div class="timeline-item">
+                                            <h3 class="timeline-header"><a href="#">@x.Heading.HeadingName</a> @x.Writer.WriterName @x.Writer.WriterSurname</h3>
+                                            <div class="timeline-body">
+                                                <img src="@x.ContentImage" style="max-width: 725px; max-height: 430px;" />
+                                                <br />
+                                                @x.ContentValue
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+

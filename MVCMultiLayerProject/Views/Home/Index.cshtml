@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_TestLayout.cshtml";
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="~/11/style.css">
+<style>
+    .main-navigation .current-menu-item-1 > a {
+        color: #e8554e;
+    }
+</style>
+@{ViewBag.sub = 1; }
+<div class="content-area">
+    <main id="main" class="site-main">
+        <article id="articless" class="site-articles">
+            <header class="article-header"><h2 class="section-title">Ana Sayfa</h2></header>
+            <div class="create-content">
+               @Html.Action("Partial1", "Home") 
+            </div>
+        </article>
+    </main>
+</div>
+

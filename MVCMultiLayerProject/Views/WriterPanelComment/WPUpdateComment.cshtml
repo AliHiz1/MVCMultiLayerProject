@@ -1,0 +1,18 @@
+﻿@model EntityLayer.Concrete.Comment
+@{
+    ViewBag.Title = "WPUpdateComment";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h2>Yorum Güncelleme Sayfası</h2>
+@using (Html.BeginForm("WPUpdateComment", "WRiterPanelComment", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.Label("Yorum: ")
+                    @Html.TextBoxFor(x => x.CommentMessage, new { @class = "form-control" })
+                    <br />
+                    <button class="btn btn-success">Kaydet</button>
+                </div>
+            }
+
+
